@@ -1,0 +1,24 @@
+<div class="animate__animated animate__fadeIn animate__fast">
+  <h2>By Capital</h2>
+  <hr />
+
+  <div class="row">
+    <div class="col">
+      <app-country-input
+        (onEnter)="search($event)"
+        placeholder="Search Capital ..."
+      ></app-country-input>
+    </div>
+  </div>
+  <hr />
+</div>
+
+<div *ngIf="isError" class="alert alert-danger">
+  Nothing was found with the term: {{ term }}
+</div>
+
+<div *ngIf="countries.length > 0" class="row">
+  <div class="col">
+    <app-country-table [countries]="countries"></app-country-table>
+  </div>
+</div>

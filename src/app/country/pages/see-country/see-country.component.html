@@ -1,0 +1,47 @@
+<div *ngIf="!country; else divCountry" class="alert alert-info">
+  Please wait...
+</div>
+
+<ng-template #divCountry>
+  <div class="animate__animated animate__fadeIn animate__fast">
+    <div class="row">
+      <div class="col-12">
+        <h2>
+          Country: <small>{{ country.name.common }}</small>
+        </h2>
+        <hr />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <h5>Flag</h5>
+        <img [src]="country.flags.png" class="img-thumbnail" />
+        <h5>Coat of Arms</h5>
+        <img [src]="country.coatOfArms.png" class="img-thumbnail" />
+      </div>
+
+      <div class="col">
+        <h5>Information</h5>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>Official Name: </strong>
+            {{ country.name.official | titlecase }}
+          </li>
+          <li class="list-group-item">
+            <strong>Region: </strong>
+            {{ country.region | titlecase }},
+            {{ country.subregion | titlecase }}
+          </li>
+          <li class="list-group-item">
+            <strong>Population: </strong> {{ country.population | number }}
+          </li>
+          <li class="list-group-item">
+            <strong>Currency: </strong>
+            {{ country.currencies | json }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ng-template>
